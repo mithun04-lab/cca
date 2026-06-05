@@ -1,0 +1,29 @@
+task 2
+
+
+
+
+ create a folder and 2 files inside the folder
+ 1. Index.html
+ 2. Docker file-&gt; with no extension
+ Include this line in dockerfile
+FROM nginx
+COPY index.html /usr/share/nginx/html/index.html
+Open cmd pmt and chane to the specific dir which u have created
+docker build --no-cache -t myimage .
+docker images
+docker run -d -p 9091:80 --name mysite1 myimage
+http://localhost:9091
+docker stop mysite1
+docker rm mysite1
+
+ Push to docker hub
+docker login
+docker tag myimage &lt;username&gt;/myimage
+docker push &lt;username&gt;/myimage
+
+ Test from dockerhub
+docker rmi &lt;username&gt;/myimage
+docker pull &lt;username&gt;/myimage
+docker run -p 9091:80 &lt;username&gt;/myimage
+http://localhost:9091
